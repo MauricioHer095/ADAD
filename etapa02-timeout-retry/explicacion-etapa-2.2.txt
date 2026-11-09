@@ -1,0 +1,31 @@
+EXPLICACIÓN DE LA BITÁCORA: ETAPA 2.2 (@Timeout + @Retry)
+Archivos analizados: bitacora-etapa-2.2.txt (respuestas del cliente) y bitacora-servidor.log (log del servicio)
+Configuración: @Timeout(800) y @Retry(maxRetries = 2, delay = 150), con los campos ThreadLocal del paso 2.1.
+
+1. Resultados
+- Respuestas SUCCESS (HTTP 200): 78 de 200 (39 %).
+- Respuestas HTTP 500: 122 de 200 (61 %).
+- Disponibilidad observada: 0.39 (en la línea base era 0.725).
+- Latencia promedio: 0.718 s. Mediana: 1.037 s. Percentil 95: 1.342 s. Máxima: 1.536 s.
+- Ninguna petición pasó de 2.5 segundos (en la línea base hubo 37 de alrededor de 3 s).
+- Duración total de la prueba: 154.7 s.
+
+2. Cambio en la tasa de éxito
+La tasa de éxito bajó respecto a la línea base, pero esto se debe al nuevo modelo de fallas que se introdujo en el paso 2.2, no a los patrones. En esta versión, en el primer intento se decide si la petición va a fallar en sus tres intentos, con una probabilidad del 60 %. Lo observado (61 % de errores) coincide con esa probabilidad.
+
+Lo importante es que @Retry no logra rescatar ninguna de esas peticiones: si la petición está marcada para fallar, falla en los tres intentos, y el cliente termina recibiendo HTTP 500. En el log se ve la secuencia completa: el intento 1 falla por conexión, el intento 2 simula la latencia de 3000 ms y el intento 3 vuelve a fallar. De los 122 errores, 119 reportan la excepción "Database connection timeout after retries" (la del tercer intento) y 3 reportan la TimeoutException de MicroProfile.
+
+Nota: la práctica menciona una disponibilidad de 0.60 a 0.75 para esta etapa, pero ese rango corresponde a la línea base. Con el 60 % de peticiones marcadas para fallar y sin @Fallback, lo esperado es una disponibilidad cercana a 0.40, que es lo que se obtuvo.
+
+3. Cambio en la latencia
+Aquí se nota el efecto de @Timeout. El intento 2 intenta dormir 3000 ms, pero el timeout lo corta a los 800 ms. Una petición fallida tarda aproximadamente lo siguiente: intento 1 (falla inmediata) + 150 ms de espera + intento 2 (cortado a 800 ms) + 150 ms + intento 3 (falla inmediata), alrededor de 1.1 segundos. Las peticiones con error promediaron 1.158 s (entre 0.808 y 1.536 s), lo que coincide con ese cálculo.
+
+Comparado con la línea base, la latencia máxima bajó de 3.03 s a 1.54 s. Ninguna petición quedó bloqueada los 3 segundos completos. Las peticiones exitosas, en cambio, siguen siendo muy rápidas (29 ms en promedio), porque se resuelven en el primer intento.
+
+La mediana subió (de 0.007 a 1.037 s) porque ahora la mayoría de las peticiones son fallidas y cada una pasa por los tres intentos. Es decir, @Timeout limita el peor caso, pero los reintentos agregan tiempo a cada petición que falla.
+
+4. Costo de los reintentos
+En el log del servidor aparecen 447 invocaciones al método getProducts() para atender 200 peticiones. Cada petición fallida golpeó a la "base de datos" tres veces en lugar de una. En un sistema real esto significa más carga sobre un componente que ya está fallando.
+
+5. Conclusión de la etapa
+@Timeout cumple su objetivo: el cliente ya no espera 3 segundos. @Retry, por sí solo, no mejora la disponibilidad con este modelo de fallas y además multiplica las llamadas al backend. El servicio sigue respondiendo con error completo (HTTP 500) cuando todo falla, que es lo que corrige la siguiente etapa.
