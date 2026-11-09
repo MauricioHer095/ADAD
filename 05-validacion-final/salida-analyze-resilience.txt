@@ -1,0 +1,32 @@
+
+╔════════════════════════════════════════════════════════════════╗
+║         ANÁLISIS DE RESILIENCIA: Lab 1.1 vs Lab 1.2            ║
+╚════════════════════════════════════════════════════════════════╝
+
+📊 LÍNEA BASE (Lab 1.1 - SIN patrones)
+─────────────────────────────────────────
+Total solicitudes:        200
+SUCCESS (HTTP 200):       145 (~72%)
+Errores/No disponibles:   55 (~28%)
+Disponibilidad:           0.725 (72%)
+
+📊 CON PATRONES (Lab 1.2 - Completo: Timeout + Retry + Fallback + CircuitBreaker)
+─────────────────────────────────────────────────────────────────────────────────
+Total solicitudes:        200
+SUCCESS (HTTP 200):       16 (~8%)
+DEGRADED_CACHE (HTTP 200):184 (~92%)
+Errores HTTP 500:         0
+Disponibilidad:           1 (100%)
+
+📈 COMPARACIÓN - MEJORA OBTENIDA
+─────────────────────────────────────────
+Disponibilidad mejorada:  0.275 (27.50%)
+Errores eliminados:       ~100% (de ~28% a 0%)
+HTTP 500 desaparecieron:  ✅ Completamente
+Respuestas degradadas:    184 solicitudes salvadas por @Fallback
+
+✅ CONCLUSIÓN
+─────────────────────────────────────────
+La implementación de patrones de resiliencia fue EXITOSA.
+Disponibilidad alcanzada: ~100% (aceptable para mayoría de aplicaciones)
+

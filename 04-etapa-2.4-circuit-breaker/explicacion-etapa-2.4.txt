@@ -1,0 +1,36 @@
+EXPLICACIÓN DE LA BITÁCORA: ETAPA 2.4 (@Timeout + @Retry + @CircuitBreaker + @Fallback)
+Archivos analizados: bitacora-etapa-2.4.txt y bitacora-servidor.log
+Configuración: se agrega @CircuitBreaker(requestVolumeThreshold = 10, failureRatio = 0.7, delay = 5000).
+
+1. Resultados
+- Respuestas SUCCESS (HTTP 200): 26 de 200 (13 %).
+- Respuestas DEGRADED_CACHE (HTTP 200): 174 de 200 (87 %).
+- Respuestas HTTP 500: 0.
+- Disponibilidad observada: 1.00.
+- Latencia promedio: 0.378 s. Mediana: 0.329 s. Percentil 95: 1.081 s. Máxima: 1.485 s.
+- Duración total de la prueba: 84.7 s (en la etapa 2.3 fueron 136.6 s).
+
+2. Comportamiento del circuito
+El valor que imprime el fallback ("Se agotaron todos los N intentos") permite saber en qué estado estaba el circuito:
+- Contador 3: 15 veces. Circuito cerrado; se hicieron los tres intentos.
+- Contador 2: 4 veces. Circuito cerrado; el timeout cortó el intento 2 y el circuito se abrió antes del tercero.
+- Contador 1: 9 veces. Prueba en estado HALF_OPEN que falló; el circuito volvió a abrirse.
+- Contador 0: 146 veces. Circuito abierto; la petición se rechazó sin ejecutar getProducts().
+
+El circuito se abrió muy pronto, después de solo cinco peticiones HTTP (la primera respuesta con contador 0 aparece a las 13:46:22.647). Esto se explica porque @Retry envuelve al @CircuitBreaker, así que el circuito cuenta cada intento por separado. Las cinco primeras peticiones sumaron 10 intentos: 3 fallidos, 3 fallidos, 1 exitoso, 1 exitoso y 2 fallidos. Fueron 8 fallas de 10 (80 %), que supera el umbral de 70 %.
+
+Durante la prueba el circuito se abrió 12 veces, con rachas de entre 11 y 14 rechazos seguidos. En la primera apertura, el último fallo registrado fue a las 13:46:22.005 y la siguiente petición exitosa a las 13:46:26.974, alrededor de 5 segundos después, que es el valor de delay configurado. Después de cada periodo abierto, el circuito permite una petición de prueba (HALF_OPEN). Si esa petición tiene éxito, el circuito se cierra y vuelven a aparecer los tres intentos completos en el log. Si falla, el circuito se abre otra vez de inmediato (los casos con contador 1).
+
+3. Cambio en la tasa de éxito
+La disponibilidad sigue en 100 %, pero las respuestas SUCCESS bajaron de 43.5 % a 13 %. Este es el costo del CircuitBreaker: mientras el circuito está abierto, todas las peticiones se rechazan, incluso las que sí habrían tenido éxito, y se van directo al fallback. La práctica ya advierte que esto es normal: el alto porcentaje de DEGRADED_CACHE no indica un error, sino que el circuito está protegiendo al backend.
+
+4. Cambio en la latencia
+La latencia promedio bajó de 0.638 s (etapa 2.3) a 0.378 s, y la prueba completa tardó 84.7 s en lugar de 136.6 s. Cuando el circuito está abierto, el servicio ya no espera el timeout de 800 ms ni ejecuta la consulta, y responde mucho más rápido.
+
+Las respuestas con el circuito abierto no son instantáneas: la mayoría tardó entre 0.24 y 0.52 s. El motivo es que @Retry sigue activo por fuera del circuito: reintenta dos veces la llamada rechazada, con 150 ms de espera cada vez, antes de llegar al fallback. Aun así, es mucho menos que el segundo que tardaba una petición fallida en las etapas anteriores.
+
+5. Carga sobre el backend
+Este es el beneficio principal. En el log hay solo 88 invocaciones reales a getProducts() (54 primeros intentos, 19 segundos y 15 terceros), contra 426 en la etapa 2.3 y 447 en la 2.2. El backend recibió alrededor de cinco veces menos llamadas mientras estaba fallando.
+
+6. Conclusión de la etapa
+Con el CircuitBreaker, el servicio mantiene la disponibilidad de 100 %, responde más rápido y deja de insistir sobre un backend que está fallando. A cambio, durante los periodos abiertos se pierden respuestas que pudieron ser exitosas, y por eso baja el porcentaje de SUCCESS.

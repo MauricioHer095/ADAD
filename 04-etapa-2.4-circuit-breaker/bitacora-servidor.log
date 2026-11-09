@@ -1,0 +1,407 @@
+13:46:18.330 INFO  [io.quarkus] (main) catalog-service 1.0.0 on JVM (powered by Quarkus 3.38.0) started in 0.695s. Listening on: http://0.0.0.0:8081
+13:46:18.334 INFO  [io.quarkus] (main) Profile prod activated. 
+13:46:18.334 INFO  [io.quarkus] (main) Installed features: [cdi, rest, rest-jackson, smallrye-context-propagation, smallrye-fault-tolerance, smallrye-health, vertx]
+13:46:18.696 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) ════════════════════════════════════════════════════════════
+13:46:18.697 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Consultando catálogo de productos...
+13:46:18.698 SEVERE [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Falla de conexión a la base de datos primaria.
+13:46:18.810 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 2/3] Consultando catálogo de productos...
+13:46:18.811 WARNING [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 2/3] Simulando latencia alta en consulta de catálogo...
+13:46:19.620 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 3/3] Consultando catálogo de productos...
+13:46:19.620 SEVERE [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 3/3] Falla de conexión después de reintentos.
+13:46:19.622 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 3 intentos. Sirviendo datos desde caché.
+13:46:19.697 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) ════════════════════════════════════════════════════════════
+13:46:19.698 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Consultando catálogo de productos...
+13:46:19.698 SEVERE [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Falla de conexión a la base de datos primaria.
+13:46:19.835 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 2/3] Consultando catálogo de productos...
+13:46:19.836 WARNING [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 2/3] Simulando latencia alta en consulta de catálogo...
+13:46:20.761 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 3/3] Consultando catálogo de productos...
+13:46:20.762 SEVERE [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 3/3] Falla de conexión después de reintentos.
+13:46:20.763 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 3 intentos. Sirviendo datos desde caché.
+13:46:20.833 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) ════════════════════════════════════════════════════════════
+13:46:20.833 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Consultando catálogo de productos...
+13:46:20.834 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Catálogo retornado exitosamente desde la base de datos primaria.
+13:46:20.888 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) ════════════════════════════════════════════════════════════
+13:46:20.888 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Consultando catálogo de productos...
+13:46:20.888 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Catálogo retornado exitosamente desde la base de datos primaria.
+13:46:20.928 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) ════════════════════════════════════════════════════════════
+13:46:20.929 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Consultando catálogo de productos...
+13:46:20.929 SEVERE [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Falla de conexión a la base de datos primaria.
+13:46:21.095 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 2/3] Consultando catálogo de productos...
+13:46:21.096 WARNING [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 2/3] Simulando latencia alta en consulta de catálogo...
+13:46:22.005 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 2 intentos. Sirviendo datos desde caché.
+13:46:22.647 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:22.988 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:23.273 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:23.567 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:24.207 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:24.281 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:24.681 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:25.124 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:25.670 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:25.766 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:26.413 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:26.559 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:26.972 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) ════════════════════════════════════════════════════════════
+13:46:26.974 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Consultando catálogo de productos...
+13:46:26.975 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Catálogo retornado exitosamente desde la base de datos primaria.
+13:46:27.021 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) ════════════════════════════════════════════════════════════
+13:46:27.023 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Consultando catálogo de productos...
+13:46:27.023 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Catálogo retornado exitosamente desde la base de datos primaria.
+13:46:27.069 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) ════════════════════════════════════════════════════════════
+13:46:27.069 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Consultando catálogo de productos...
+13:46:27.070 SEVERE [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Falla de conexión a la base de datos primaria.
+13:46:27.347 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 2/3] Consultando catálogo de productos...
+13:46:27.349 WARNING [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 2/3] Simulando latencia alta en consulta de catálogo...
+13:46:28.236 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 3/3] Consultando catálogo de productos...
+13:46:28.236 SEVERE [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 3/3] Falla de conexión después de reintentos.
+13:46:28.237 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 3 intentos. Sirviendo datos desde caché.
+13:46:28.282 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) ════════════════════════════════════════════════════════════
+13:46:28.282 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Consultando catálogo de productos...
+13:46:28.282 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Catálogo retornado exitosamente desde la base de datos primaria.
+13:46:28.325 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) ════════════════════════════════════════════════════════════
+13:46:28.325 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Consultando catálogo de productos...
+13:46:28.325 SEVERE [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Falla de conexión a la base de datos primaria.
+13:46:28.533 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 2/3] Consultando catálogo de productos...
+13:46:28.535 WARNING [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 2/3] Simulando latencia alta en consulta de catálogo...
+13:46:29.538 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 3/3] Consultando catálogo de productos...
+13:46:29.539 SEVERE [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 3/3] Falla de conexión después de reintentos.
+13:46:29.541 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 3 intentos. Sirviendo datos desde caché.
+13:46:29.601 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) ════════════════════════════════════════════════════════════
+13:46:29.601 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Consultando catálogo de productos...
+13:46:29.601 SEVERE [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Falla de conexión a la base de datos primaria.
+13:46:29.671 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 2/3] Consultando catálogo de productos...
+13:46:29.672 WARNING [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 2/3] Simulando latencia alta en consulta de catálogo...
+13:46:30.719 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 2 intentos. Sirviendo datos desde caché.
+13:46:30.961 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:31.449 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:31.783 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:32.029 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:32.266 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:32.384 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:32.881 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:33.302 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:33.564 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:33.767 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:34.109 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:34.530 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:34.623 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:35.167 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:35.743 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) ════════════════════════════════════════════════════════════
+13:46:35.744 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Consultando catálogo de productos...
+13:46:35.745 SEVERE [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Falla de conexión a la base de datos primaria.
+13:46:35.747 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 1 intentos. Sirviendo datos desde caché.
+13:46:36.304 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:36.429 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:36.943 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:37.594 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:37.797 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:37.982 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:38.404 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:38.886 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:39.400 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:39.833 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:39.960 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:40.555 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:40.960 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) ════════════════════════════════════════════════════════════
+13:46:40.974 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Consultando catálogo de productos...
+13:46:40.975 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Catálogo retornado exitosamente desde la base de datos primaria.
+13:46:41.022 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) ════════════════════════════════════════════════════════════
+13:46:41.022 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Consultando catálogo de productos...
+13:46:41.022 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Catálogo retornado exitosamente desde la base de datos primaria.
+13:46:41.069 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) ════════════════════════════════════════════════════════════
+13:46:41.069 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Consultando catálogo de productos...
+13:46:41.069 SEVERE [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Falla de conexión a la base de datos primaria.
+13:46:41.224 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 2/3] Consultando catálogo de productos...
+13:46:41.224 WARNING [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 2/3] Simulando latencia alta en consulta de catálogo...
+13:46:42.030 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 3/3] Consultando catálogo de productos...
+13:46:42.031 SEVERE [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 3/3] Falla de conexión después de reintentos.
+13:46:42.031 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 3 intentos. Sirviendo datos desde caché.
+13:46:42.087 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) ════════════════════════════════════════════════════════════
+13:46:42.087 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Consultando catálogo de productos...
+13:46:42.087 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Catálogo retornado exitosamente desde la base de datos primaria.
+13:46:42.155 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) ════════════════════════════════════════════════════════════
+13:46:42.155 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Consultando catálogo de productos...
+13:46:42.155 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Catálogo retornado exitosamente desde la base de datos primaria.
+13:46:42.234 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) ════════════════════════════════════════════════════════════
+13:46:42.235 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Consultando catálogo de productos...
+13:46:42.235 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Catálogo retornado exitosamente desde la base de datos primaria.
+13:46:42.286 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) ════════════════════════════════════════════════════════════
+13:46:42.286 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Consultando catálogo de productos...
+13:46:42.286 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Catálogo retornado exitosamente desde la base de datos primaria.
+13:46:42.336 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) ════════════════════════════════════════════════════════════
+13:46:42.336 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Consultando catálogo de productos...
+13:46:42.336 SEVERE [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Falla de conexión a la base de datos primaria.
+13:46:42.402 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 2/3] Consultando catálogo de productos...
+13:46:42.402 WARNING [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 2/3] Simulando latencia alta en consulta de catálogo...
+13:46:43.361 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 3/3] Consultando catálogo de productos...
+13:46:43.361 SEVERE [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 3/3] Falla de conexión después de reintentos.
+13:46:43.361 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 3 intentos. Sirviendo datos desde caché.
+13:46:43.403 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) ════════════════════════════════════════════════════════════
+13:46:43.403 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Consultando catálogo de productos...
+13:46:43.403 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Catálogo retornado exitosamente desde la base de datos primaria.
+13:46:43.454 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) ════════════════════════════════════════════════════════════
+13:46:43.454 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Consultando catálogo de productos...
+13:46:43.455 SEVERE [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Falla de conexión a la base de datos primaria.
+13:46:43.750 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 2/3] Consultando catálogo de productos...
+13:46:43.750 WARNING [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 2/3] Simulando latencia alta en consulta de catálogo...
+13:46:44.560 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 3/3] Consultando catálogo de productos...
+13:46:44.560 SEVERE [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 3/3] Falla de conexión después de reintentos.
+13:46:44.560 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 3 intentos. Sirviendo datos desde caché.
+13:46:44.643 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) ════════════════════════════════════════════════════════════
+13:46:44.643 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Consultando catálogo de productos...
+13:46:44.643 SEVERE [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Falla de conexión a la base de datos primaria.
+13:46:44.933 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 1 intentos. Sirviendo datos desde caché.
+13:46:44.996 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:45.398 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:45.955 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:46.171 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:46.424 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:46.514 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:46.857 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:47.231 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:47.809 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:48.151 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:48.571 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:48.785 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:49.427 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:49.863 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) ════════════════════════════════════════════════════════════
+13:46:49.865 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Consultando catálogo de productos...
+13:46:49.865 SEVERE [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Falla de conexión a la base de datos primaria.
+13:46:49.865 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 1 intentos. Sirviendo datos desde caché.
+13:46:50.269 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:50.393 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:50.952 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:51.044 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:51.512 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:51.776 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:52.522 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:53.084 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:53.330 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:53.657 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:54.251 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:54.550 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:54.987 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) ════════════════════════════════════════════════════════════
+13:46:54.988 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Consultando catálogo de productos...
+13:46:54.990 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Catálogo retornado exitosamente desde la base de datos primaria.
+13:46:55.065 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) ════════════════════════════════════════════════════════════
+13:46:55.065 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Consultando catálogo de productos...
+13:46:55.065 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Catálogo retornado exitosamente desde la base de datos primaria.
+13:46:55.111 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) ════════════════════════════════════════════════════════════
+13:46:55.111 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Consultando catálogo de productos...
+13:46:55.111 SEVERE [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Falla de conexión a la base de datos primaria.
+13:46:55.452 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 2/3] Consultando catálogo de productos...
+13:46:55.453 WARNING [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 2/3] Simulando latencia alta en consulta de catálogo...
+13:46:56.578 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 3/3] Consultando catálogo de productos...
+13:46:56.579 SEVERE [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 3/3] Falla de conexión después de reintentos.
+13:46:56.581 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 3 intentos. Sirviendo datos desde caché.
+13:46:56.656 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) ════════════════════════════════════════════════════════════
+13:46:56.656 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Consultando catálogo de productos...
+13:46:56.656 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Catálogo retornado exitosamente desde la base de datos primaria.
+13:46:56.751 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) ════════════════════════════════════════════════════════════
+13:46:56.752 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Consultando catálogo de productos...
+13:46:56.752 SEVERE [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Falla de conexión a la base de datos primaria.
+13:46:56.813 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 2/3] Consultando catálogo de productos...
+13:46:56.813 WARNING [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 2/3] Simulando latencia alta en consulta de catálogo...
+13:46:57.936 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 3/3] Consultando catálogo de productos...
+13:46:57.936 SEVERE [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 3/3] Falla de conexión después de reintentos.
+13:46:57.936 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 3 intentos. Sirviendo datos desde caché.
+13:46:58.009 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) ════════════════════════════════════════════════════════════
+13:46:58.009 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Consultando catálogo de productos...
+13:46:58.009 SEVERE [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Falla de conexión a la base de datos primaria.
+13:46:58.044 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 2/3] Consultando catálogo de productos...
+13:46:58.044 WARNING [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 2/3] Simulando latencia alta en consulta de catálogo...
+13:46:59.195 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 2 intentos. Sirviendo datos desde caché.
+13:46:59.338 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:46:59.975 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:00.176 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:00.782 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:01.220 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:01.730 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:01.962 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:02.524 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:02.819 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:03.583 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:03.724 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:04.065 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) ════════════════════════════════════════════════════════════
+13:47:04.066 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Consultando catálogo de productos...
+13:47:04.068 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Catálogo retornado exitosamente desde la base de datos primaria.
+13:47:04.143 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) ════════════════════════════════════════════════════════════
+13:47:04.143 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Consultando catálogo de productos...
+13:47:04.144 SEVERE [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Falla de conexión a la base de datos primaria.
+13:47:04.439 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 2/3] Consultando catálogo de productos...
+13:47:04.439 WARNING [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 2/3] Simulando latencia alta en consulta de catálogo...
+13:47:05.249 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 3/3] Consultando catálogo de productos...
+13:47:05.250 SEVERE [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 3/3] Falla de conexión después de reintentos.
+13:47:05.251 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 3 intentos. Sirviendo datos desde caché.
+13:47:05.281 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) ════════════════════════════════════════════════════════════
+13:47:05.282 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Consultando catálogo de productos...
+13:47:05.282 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Catálogo retornado exitosamente desde la base de datos primaria.
+13:47:05.343 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) ════════════════════════════════════════════════════════════
+13:47:05.344 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Consultando catálogo de productos...
+13:47:05.344 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Catálogo retornado exitosamente desde la base de datos primaria.
+13:47:05.405 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) ════════════════════════════════════════════════════════════
+13:47:05.405 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Consultando catálogo de productos...
+13:47:05.405 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Catálogo retornado exitosamente desde la base de datos primaria.
+13:47:05.467 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) ════════════════════════════════════════════════════════════
+13:47:05.468 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Consultando catálogo de productos...
+13:47:05.468 SEVERE [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Falla de conexión a la base de datos primaria.
+13:47:05.776 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 2/3] Consultando catálogo de productos...
+13:47:05.778 WARNING [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 2/3] Simulando latencia alta en consulta de catálogo...
+13:47:06.926 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 3/3] Consultando catálogo de productos...
+13:47:06.927 SEVERE [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 3/3] Falla de conexión después de reintentos.
+13:47:06.928 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 3 intentos. Sirviendo datos desde caché.
+13:47:06.976 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) ════════════════════════════════════════════════════════════
+13:47:06.976 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Consultando catálogo de productos...
+13:47:06.976 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Catálogo retornado exitosamente desde la base de datos primaria.
+13:47:07.016 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) ════════════════════════════════════════════════════════════
+13:47:07.017 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Consultando catálogo de productos...
+13:47:07.017 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Catálogo retornado exitosamente desde la base de datos primaria.
+13:47:07.058 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) ════════════════════════════════════════════════════════════
+13:47:07.059 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Consultando catálogo de productos...
+13:47:07.059 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Catálogo retornado exitosamente desde la base de datos primaria.
+13:47:07.128 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) ════════════════════════════════════════════════════════════
+13:47:07.128 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Consultando catálogo de productos...
+13:47:07.129 SEVERE [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Falla de conexión a la base de datos primaria.
+13:47:07.129 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 2/3] Consultando catálogo de productos...
+13:47:07.129 WARNING [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 2/3] Simulando latencia alta en consulta de catálogo...
+13:47:07.986 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 3/3] Consultando catálogo de productos...
+13:47:07.986 SEVERE [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 3/3] Falla de conexión después de reintentos.
+13:47:07.987 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 3 intentos. Sirviendo datos desde caché.
+13:47:08.032 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) ════════════════════════════════════════════════════════════
+13:47:08.032 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Consultando catálogo de productos...
+13:47:08.032 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Catálogo retornado exitosamente desde la base de datos primaria.
+13:47:08.095 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) ════════════════════════════════════════════════════════════
+13:47:08.095 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Consultando catálogo de productos...
+13:47:08.095 SEVERE [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Falla de conexión a la base de datos primaria.
+13:47:08.422 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 2/3] Consultando catálogo de productos...
+13:47:08.423 WARNING [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 2/3] Simulando latencia alta en consulta de catálogo...
+13:47:09.388 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 3/3] Consultando catálogo de productos...
+13:47:09.388 SEVERE [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 3/3] Falla de conexión después de reintentos.
+13:47:09.388 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 3 intentos. Sirviendo datos desde caché.
+13:47:09.446 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) ════════════════════════════════════════════════════════════
+13:47:09.446 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Consultando catálogo de productos...
+13:47:09.446 SEVERE [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Falla de conexión a la base de datos primaria.
+13:47:09.683 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 1 intentos. Sirviendo datos desde caché.
+13:47:10.103 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:10.697 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:11.289 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:11.587 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:11.820 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:12.038 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:12.581 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:12.970 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:13.327 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:13.825 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:14.261 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:14.545 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) ════════════════════════════════════════════════════════════
+13:47:14.545 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Consultando catálogo de productos...
+13:47:14.546 SEVERE [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Falla de conexión a la base de datos primaria.
+13:47:14.546 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 1 intentos. Sirviendo datos desde caché.
+13:47:15.290 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:15.556 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:16.005 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:16.350 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:16.693 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:17.098 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:17.334 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:17.912 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:18.255 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:18.608 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:18.762 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:19.169 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:19.731 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) ════════════════════════════════════════════════════════════
+13:47:19.732 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Consultando catálogo de productos...
+13:47:19.732 SEVERE [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Falla de conexión a la base de datos primaria.
+13:47:19.732 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 1 intentos. Sirviendo datos desde caché.
+13:47:20.044 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:20.449 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:20.883 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:21.303 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:21.643 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:21.850 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:22.190 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:22.672 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:23.311 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:23.775 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:24.037 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:24.469 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:24.936 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) ════════════════════════════════════════════════════════════
+13:47:24.936 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Consultando catálogo de productos...
+13:47:24.937 SEVERE [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Falla de conexión a la base de datos primaria.
+13:47:24.937 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 1 intentos. Sirviendo datos desde caché.
+13:47:25.512 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:25.841 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:26.259 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:26.507 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:26.897 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:27.272 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:27.533 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:27.981 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:28.341 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:28.773 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:29.050 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:29.428 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:29.939 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) ════════════════════════════════════════════════════════════
+13:47:29.939 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Consultando catálogo de productos...
+13:47:29.939 SEVERE [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Falla de conexión a la base de datos primaria.
+13:47:29.939 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 1 intentos. Sirviendo datos desde caché.
+13:47:30.353 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:30.878 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:31.216 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:31.697 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:32.035 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:32.424 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:32.611 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:33.012 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:33.641 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:33.717 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:34.045 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:34.351 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:34.490 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:34.817 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:35.018 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) ════════════════════════════════════════════════════════════
+13:47:35.018 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Consultando catálogo de productos...
+13:47:35.018 SEVERE [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Falla de conexión a la base de datos primaria.
+13:47:35.019 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 1 intentos. Sirviendo datos desde caché.
+13:47:35.481 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:35.711 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:36.381 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:36.752 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:37.312 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:37.608 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:37.870 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:38.381 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:38.724 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:39.235 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:39.861 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 0 intentos. Sirviendo datos desde caché.
+13:47:40.091 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) ════════════════════════════════════════════════════════════
+13:47:40.092 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Consultando catálogo de productos...
+13:47:40.092 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Catálogo retornado exitosamente desde la base de datos primaria.
+13:47:40.154 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) ════════════════════════════════════════════════════════════
+13:47:40.155 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Consultando catálogo de productos...
+13:47:40.155 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Catálogo retornado exitosamente desde la base de datos primaria.
+13:47:40.213 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) ════════════════════════════════════════════════════════════
+13:47:40.213 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Consultando catálogo de productos...
+13:47:40.214 SEVERE [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Falla de conexión a la base de datos primaria.
+13:47:40.214 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 2/3] Consultando catálogo de productos...
+13:47:40.215 WARNING [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 2/3] Simulando latencia alta en consulta de catálogo...
+13:47:41.172 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 3/3] Consultando catálogo de productos...
+13:47:41.173 SEVERE [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 3/3] Falla de conexión después de reintentos.
+13:47:41.173 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 3 intentos. Sirviendo datos desde caché.
+13:47:41.316 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) ════════════════════════════════════════════════════════════
+13:47:41.316 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Consultando catálogo de productos...
+13:47:41.316 SEVERE [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Falla de conexión a la base de datos primaria.
+13:47:41.317 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 2/3] Consultando catálogo de productos...
+13:47:41.317 WARNING [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 2/3] Simulando latencia alta en consulta de catálogo...
+13:47:42.135 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 3/3] Consultando catálogo de productos...
+13:47:42.135 SEVERE [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 3/3] Falla de conexión después de reintentos.
+13:47:42.136 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 3 intentos. Sirviendo datos desde caché.
+13:47:42.213 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) ════════════════════════════════════════════════════════════
+13:47:42.213 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Consultando catálogo de productos...
+13:47:42.213 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Catálogo retornado exitosamente desde la base de datos primaria.
+13:47:42.273 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) ════════════════════════════════════════════════════════════
+13:47:42.273 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Consultando catálogo de productos...
+13:47:42.273 SEVERE [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Falla de conexión a la base de datos primaria.
+13:47:42.495 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 2/3] Consultando catálogo de productos...
+13:47:42.495 WARNING [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 2/3] Simulando latencia alta en consulta de catálogo...
+13:47:43.306 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 2 intentos. Sirviendo datos desde caché.

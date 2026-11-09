@@ -1,0 +1,34 @@
+EXPLICACIÓN DE LA BITÁCORA: VALIDACIÓN FINAL (PASO 3)
+Archivos analizados: resilience-sample.txt, bitacora-servidor.log y salida-analyze-resilience.txt
+Configuración: versión final con los cuatro patrones (igual que la etapa 2.4), ejecutada de nuevo como pide el paso 3.1.
+
+1. Resultados
+- Respuestas SUCCESS (HTTP 200): 16 de 200 (8 %).
+- Respuestas DEGRADED_CACHE (HTTP 200): 184 de 200 (92 %).
+- Respuestas HTTP 500: 0.
+- Disponibilidad observada: 1.00.
+- Latencia promedio: 0.386 s. Mediana: 0.344 s. Percentil 95: 1.153 s. Máxima: 1.386 s.
+- Duración total de la prueba: 86.8 s.
+
+2. Comparación con la etapa 2.4
+Los resultados son consistentes con la corrida de la etapa 2.4. La disponibilidad vuelve a ser de 100 %, la latencia promedio es casi la misma (0.386 s contra 0.378 s) y el circuito se comporta igual: se abrió por primera vez después de cinco peticiones (13:48:12.832) y en total se abrió 13 veces, con rachas de hasta 14 rechazos seguidos. Los contadores del fallback fueron: 17 con valor 3, 1 con valor 2, 8 con valor 1 y 158 con valor 0. Se hicieron 77 invocaciones reales al método.
+
+La proporción de SUCCESS fue un poco menor (8 % contra 13 %). Es una variación normal, porque el modelo de fallas es aleatorio y el número de aperturas del circuito cambia de una corrida a otra. Cuantas más veces se abre, más peticiones se van al fallback.
+
+3. Comparación con la línea base (salida de analyze-resilience.ps1)
+- Disponibilidad: de 0.725 a 1.00 (mejora de 0.275).
+- Errores HTTP 500: de 55 (27.5 %) a 0.
+- Latencia máxima: de 3.030 s a 1.386 s.
+- Peticiones de alrededor de 3 segundos: de 37 a ninguna.
+- Respuestas exitosas desde la base de datos: de 145 a 16. Las demás se atendieron con datos en caché.
+
+4. Respuestas a las preguntas de la práctica
+- ¿Disminuyeron las respuestas HTTP 500? Sí, de 55 en la línea base a 0.
+- ¿Qué porcentaje fue SUCCESS vs DEGRADED_CACHE? 8 % SUCCESS y 92 % DEGRADED_CACHE.
+- ¿Mejoró la latencia? El peor caso sí: la latencia máxima bajó de 3.03 s a 1.39 s y ninguna petición quedó bloqueada 3 segundos. La latencia promedio es parecida a la de la línea base (0.386 s contra 0.563 s), pero mucho más estable.
+- ¿Qué costo tiene el Retry? Hasta tres llamadas a la base de datos por petición y alrededor de 300 ms adicionales por las esperas de 150 ms. En las etapas 2.2 y 2.3 eso significó más de 420 invocaciones para 200 peticiones.
+- ¿Cuándo se abrió el circuito y cuánto duró? Se abrió a las 13:48:12.832, después de la quinta petición. Cada periodo abierto duró alrededor de 4 a 5 segundos, acorde con delay = 5000.
+- ¿Volvieron los reintentos completos después de cerrarse? Sí. Después de cada periodo abierto aparecen de nuevo secuencias con [Intento 1/3], [Intento 2/3] y [Intento 3/3], y fallbacks con contador 3.
+
+5. Conclusión
+La implementación de los cuatro patrones funciona como se espera: el servicio no devuelve errores, el tiempo de respuesta tiene un límite y el backend queda protegido de llamadas repetidas mientras falla. El costo es que la mayor parte de las respuestas se sirven desde la caché.

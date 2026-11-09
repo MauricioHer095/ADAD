@@ -1,0 +1,29 @@
+EXPLICACIÓN DE LA BITÁCORA: ETAPA 2.3 (@Timeout + @Retry + @Fallback)
+Archivos analizados: bitacora-etapa-2.3.txt y bitacora-servidor.log
+Configuración: se agrega @Fallback(fallbackMethod = "getCatalogFallback"), que devuelve datos en caché con el estado DEGRADED_CACHE.
+
+1. Resultados
+- Respuestas SUCCESS (HTTP 200): 87 de 200 (43.5 %).
+- Respuestas DEGRADED_CACHE (HTTP 200): 113 de 200 (56.5 %).
+- Respuestas HTTP 500: 0.
+- Disponibilidad observada: 1.00 (en la etapa 2.2 era 0.39).
+- Latencia promedio: 0.638 s. Mediana: 0.916 s. Percentil 95: 1.327 s. Máxima: 1.499 s.
+- Duración total de la prueba: 136.6 s.
+
+2. Cambio en la tasa de éxito
+El cambio más claro de todo el laboratorio ocurre aquí: los errores HTTP 500 desaparecen. Las peticiones que en la etapa anterior terminaban en error ahora reciben una respuesta HTTP 200 con datos de respaldo. El log lo confirma: el mensaje "Fallback activado: Se agotaron todos los 3 intentos" aparece exactamente 113 veces, una por cada respuesta DEGRADED_CACHE.
+
+Hay que distinguir entre disponibilidad y calidad de la respuesta. La disponibilidad sube a 100 %, porque el cliente siempre recibe algo útil, pero solo el 43.5 % de las respuestas viene de la base de datos primaria. El resto son datos en caché, que pueden estar desactualizados. Es un intercambio deliberado: se prefiere responder con datos viejos antes que rechazar la petición.
+
+La proporción SUCCESS/DEGRADED_CACHE (43.5 % / 56.5 %) es muy parecida a la de la etapa 2.2 (39 % / 61 %). Esto tiene sentido, porque el modelo de fallas es el mismo. Lo único que cambia es qué recibe el cliente cuando todo falla.
+
+3. Cambio en la latencia
+La latencia es prácticamente igual a la de la etapa 2.2. Las respuestas degradadas promediaron 1.121 s (entre 0.806 y 1.499 s), porque antes de llegar al fallback la petición sigue pasando por los tres intentos, el timeout de 800 ms y las dos esperas de 150 ms. Las respuestas exitosas siguen siendo rápidas (11 ms en promedio).
+
+Es decir, @Fallback no mejora el tiempo de respuesta; solo cambia el resultado final de las peticiones fallidas. La duración total de la prueba (136.6 s) es similar a la de la etapa anterior.
+
+4. Costo
+Se siguen haciendo tres llamadas al backend por cada petición que falla: 426 invocaciones en total para 200 peticiones. El servicio insiste aunque el backend esté fallando de forma constante, y eso es lo que atiende la siguiente etapa con el CircuitBreaker.
+
+5. Conclusión de la etapa
+Con @Fallback la disponibilidad pasa de 0.39 a 1.00 y no queda ningún error HTTP 500. El cliente siempre obtiene una respuesta, aunque más de la mitad de las veces sea con datos en caché.

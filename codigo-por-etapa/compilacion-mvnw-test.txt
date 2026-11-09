@@ -1,0 +1,35 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------------< com.ecom:catalog-service >----------------------
+[INFO] Building catalog-service 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[WARNING] The artifact io.quarkus:quarkus-junit5:jar:3.38.0 has been relocated to io.quarkus:quarkus-junit:jar:3.38.0: Update the artifactId in your project build file. Refer to https://github.com/quarkusio/quarkus/wiki/Migration-Guide-3.31 for more information.
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ catalog-service ---
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ catalog-service ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- quarkus:3.38.0:generate-code (default) @ catalog-service ---
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ catalog-service ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 2 source files with javac [debug release 25] to target\classes
+[INFO] 
+[INFO] --- quarkus:3.38.0:generate-code-tests (default) @ catalog-service ---
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ catalog-service ---
+[INFO] skip non existing resourceDirectory C:\Users\Lenovo\AppData\Local\Temp\catalog-lab-build-134024\paso-1\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ catalog-service ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ catalog-service ---
+[INFO] No tests to run.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  6.218 s
+[INFO] Finished at: 2026-11-05T13:40:32-06:00
+[INFO] ------------------------------------------------------------------------
