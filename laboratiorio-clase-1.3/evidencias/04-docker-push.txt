@@ -1,0 +1,67 @@
+﻿PS> docker login
+(salida interactiva no capturada; codigo de salida: 0)
+
+PS> docker push mau095/catalog-service:1.0.0
+The push refers to repository [docker.io/mau095/catalog-service]
+c258ed900fd9: Waiting
+ae09d9763e03: Waiting
+163c9efc251e: Waiting
+0cf5c0feaf89: Waiting
+51040db60f47: Waiting
+591afad608f6: Waiting
+e9ba8e4a04be: Waiting
+ae09d9763e03: Waiting
+163c9efc251e: Waiting
+0cf5c0feaf89: Waiting
+51040db60f47: Waiting
+591afad608f6: Waiting
+e9ba8e4a04be: Waiting
+c258ed900fd9: Waiting
+163c9efc251e: Waiting
+0cf5c0feaf89: Waiting
+51040db60f47: Waiting
+591afad608f6: Waiting
+e9ba8e4a04be: Waiting
+c258ed900fd9: Waiting
+ae09d9763e03: Waiting
+163c9efc251e: Waiting
+0cf5c0feaf89: Waiting
+51040db60f47: Waiting
+591afad608f6: Waiting
+e9ba8e4a04be: Waiting
+c258ed900fd9: Waiting
+ae09d9763e03: Waiting
+51040db60f47: Waiting
+591afad608f6: Waiting
+e9ba8e4a04be: Waiting
+c258ed900fd9: Waiting
+ae09d9763e03: Waiting
+163c9efc251e: Waiting
+0cf5c0feaf89: Waiting
+ae09d9763e03: Waiting
+163c9efc251e: Waiting
+0cf5c0feaf89: Waiting
+51040db60f47: Waiting
+591afad608f6: Waiting
+e9ba8e4a04be: Waiting
+c258ed900fd9: Waiting
+591afad608f6: Waiting
+e9ba8e4a04be: Waiting
+c258ed900fd9: Waiting
+ae09d9763e03: Waiting
+163c9efc251e: Waiting
+0cf5c0feaf89: Waiting
+51040db60f47: Waiting
+c258ed900fd9: Waiting
+0cf5c0feaf89: Waiting
+51040db60f47: Waiting
+591afad608f6: Waiting
+0cf5c0feaf89: Pushed
+e9ba8e4a04be: Pushed
+c258ed900fd9: Pushed
+591afad608f6: Pushed
+ae09d9763e03: Pushed
+51040db60f47: Pushed
+163c9efc251e: Pushed
+1.0.0: digest: sha256:3d0a1c802cb6bfdf95771bfa3c0f9b1c20cb32e794afe585135f1d9db80a016b size: 856
+

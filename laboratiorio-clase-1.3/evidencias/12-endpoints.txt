@@ -1,0 +1,38 @@
+﻿PS> curl.exe -s http://localhost:8080/v1/products | jq .
+{
+  "status": "SUCCESS",
+  "data": [
+    "Product A",
+    "Product B",
+    "Product C"
+  ]
+}
+
+PS> curl.exe -s http://localhost:8080/health | jq .
+{
+  "status": "UP",
+  "checks": [
+    {
+      "name": "catalog-database-check",
+      "status": "UP"
+    }
+  ]
+}
+
+PS> curl.exe -s http://localhost:8080/ready | jq .
+{
+  "status": "UP",
+  "checks": [
+    {
+      "name": "catalog-database-check",
+      "status": "UP"
+    }
+  ]
+}
+
+PS> curl.exe -s http://localhost:8080/live | jq .
+{
+  "status": "UP",
+  "checks": []
+}
+

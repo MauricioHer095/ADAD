@@ -1,0 +1,56 @@
+﻿PS> .\mvnw.cmd -B clean package -DskipTests
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------------< com.ecom:catalog-service >----------------------
+[INFO] Building catalog-service 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[WARNING] The artifact io.quarkus:quarkus-junit5:jar:3.38.0 has been relocated to io.quarkus:quarkus-junit:jar:3.38.0: Update the artifactId in your project build file. Refer to https://github.com/quarkusio/quarkus/wiki/Migration-Guide-3.31 for more information.
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ catalog-service ---
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ catalog-service ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- quarkus:3.38.0:generate-code (default) @ catalog-service ---
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ catalog-service ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 2 source files with javac [debug release 25] to target\classes
+[INFO] 
+[INFO] --- quarkus:3.38.0:generate-code-tests (default) @ catalog-service ---
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ catalog-service ---
+[INFO] skip non existing resourceDirectory C:\Users\Lenovo\AppData\Local\Temp\catalog-lab13-build-20261116-174542\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ catalog-service ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ catalog-service ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.5.0:jar (default-jar) @ catalog-service ---
+[INFO] Building jar: C:\Users\Lenovo\AppData\Local\Temp\catalog-lab13-build-20261116-174542\target\catalog-service-1.0.0.jar
+[INFO] 
+[INFO] --- quarkus:3.38.0:build (default) @ catalog-service ---
+[INFO] [io.quarkus.deployment.QuarkusAugmentor] Quarkus augmentation completed in 2340ms
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  11.799 s
+[INFO] Finished at: 2026-11-16T17:45:56-06:00
+[INFO] ------------------------------------------------------------------------
+
+PS> Get-ChildItem target\quarkus-app
+
+Mode   LastWriteTime             Length Name                        
+----   -------------             ------ ----                        
+d----- 16/11/2026 05:45:56 p. m.        app                         
+d----- 16/11/2026 05:45:55 p. m.        lib                         
+d----- 16/11/2026 05:45:56 p. m.        quarkus                     
+-a---- 16/11/2026 05:45:56 p. m. 6830   quarkus-app-dependencies.txt
+-a---- 16/11/2026 05:45:56 p. m. 689    quarkus-run.jar             
+
+
+
+

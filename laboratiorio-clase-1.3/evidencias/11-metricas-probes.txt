@@ -1,0 +1,9 @@
+﻿PS> kubectl get --raw /api/v1/nodes/minikube/proxy/metrics/probes  (lectura 1)
+prober_probe_total{container="catalog-service",namespace="default",pod="catalog-service-bc966789d-jnj5t",pod_uid="710b1f92-bb29-40c2-b725-b8451a6b2aef",probe_type="Liveness",result="successful"} 3
+prober_probe_total{container="catalog-service",namespace="default",pod="catalog-service-bc966789d-jnj5t",pod_uid="710b1f92-bb29-40c2-b725-b8451a6b2aef",probe_type="Readiness",result="successful"} 7
+
+PS> kubectl get --raw /api/v1/nodes/minikube/proxy/metrics/probes  (lectura 2, 20 s despues)
+prober_probe_total{container="catalog-service",namespace="default",pod="catalog-service-bc966789d-jnj5t",pod_uid="710b1f92-bb29-40c2-b725-b8451a6b2aef",probe_type="Liveness",result="successful"} 5
+prober_probe_total{container="catalog-service",namespace="default",pod="catalog-service-bc966789d-jnj5t",pod_uid="710b1f92-bb29-40c2-b725-b8451a6b2aef",probe_type="Readiness",result="successful"} 11
+
+Probes exitosos -> Readiness: 7 a 11 | Liveness: 3 a 5 | Reinicios del contenedor: 0

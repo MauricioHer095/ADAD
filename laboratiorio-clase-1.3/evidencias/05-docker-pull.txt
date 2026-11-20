@@ -1,0 +1,23 @@
+﻿PS> docker image rm mau095/catalog-service:1.0.0
+Untagged: mau095/catalog-service:1.0.0
+Deleted: sha256:3d0a1c802cb6bfdf95771bfa3c0f9b1c20cb32e794afe585135f1d9db80a016b
+
+PS> docker pull mau095/catalog-service:1.0.0
+1.0.0: Pulling from mau095/catalog-service
+591afad608f6: Pulling fs layer
+ae09d9763e03: Pulling fs layer
+c258ed900fd9: Pulling fs layer
+e9ba8e4a04be: Pulling fs layer
+591afad608f6: Already exists
+ae09d9763e03: Already exists
+c258ed900fd9: Already exists
+e9ba8e4a04be: Already exists
+591afad608f6: Pull complete
+ae09d9763e03: Pull complete
+c258ed900fd9: Pull complete
+e9ba8e4a04be: Pull complete
+0cf5c0feaf89: Download complete
+Digest: sha256:3d0a1c802cb6bfdf95771bfa3c0f9b1c20cb32e794afe585135f1d9db80a016b
+Status: Downloaded newer image for mau095/catalog-service:1.0.0
+docker.io/mau095/catalog-service:1.0.0
+

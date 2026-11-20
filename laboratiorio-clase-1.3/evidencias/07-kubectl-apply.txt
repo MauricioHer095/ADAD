@@ -1,0 +1,17 @@
+﻿PS> kubectl delete (recursos de una corrida anterior, si existen)
+
+
+PS> minikube image rm mau095/catalog-service:1.0.0
+! Failed to remove images for profile minikube error removing images: crictl: sudo /usr/local/bin/crictl rmi mau095/catalog-service:1.0.0: Process exited with status 1
+stdout:
+System.Management.Automation.RemoteException
+stderr:
+no such image mau095/catalog-service:1.0.0
+System.Management.Automation.RemoteException
+
+PS> kubectl apply -f k8s\01-deployment.yaml
+deployment.apps/catalog-service created
+
+PS> kubectl apply -f k8s\02-service.yaml
+service/catalog-service created
+

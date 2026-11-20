@@ -1,0 +1,10 @@
+﻿PS> kubectl cluster-info
+Kubernetes control plane is running at https://127.0.0.1:44358
+CoreDNS is running at https://127.0.0.1:44358/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+
+To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
+
+PS> kubectl get nodes
+NAME       STATUS   ROLES           AGE   VERSION
+minikube   Ready    control-plane   19h   v1.37.0
+

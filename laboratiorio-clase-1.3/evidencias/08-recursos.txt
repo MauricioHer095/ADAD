@@ -1,0 +1,16 @@
+﻿PS> kubectl rollout status deployment/catalog-service --timeout=240s
+Waiting for deployment "catalog-service" rollout to finish: 0 of 1 updated replicas are available...
+deployment "catalog-service" successfully rolled out
+
+PS> kubectl get deployment catalog-service
+NAME              READY   UP-TO-DATE   AVAILABLE   AGE
+catalog-service   1/1     1            1           24s
+
+PS> kubectl get pods -l app=catalog-service
+NAME                              READY   STATUS    RESTARTS   AGE
+catalog-service-bc966789d-jnj5t   1/1     Running   0          24s
+
+PS> kubectl get service catalog-service
+NAME              TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
+catalog-service   ClusterIP   10.109.253.173   <none>        8080/TCP   24s
+

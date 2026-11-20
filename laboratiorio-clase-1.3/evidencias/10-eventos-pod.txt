@@ -1,0 +1,9 @@
+﻿PS> kubectl get events (solo del pod catalog-service-bc966789d-jnj5t)
+LAST SEEN   TYPE      REASON      OBJECT                                MESSAGE
+60s         Normal    Scheduled   pod/catalog-service-bc966789d-jnj5t   Successfully assigned default/catalog-service-bc966789d-jnj5t to minikube
+60s         Normal    Pulling     pod/catalog-service-bc966789d-jnj5t   Pulling image "mau095/catalog-service:1.0.0"
+42s         Normal    Pulled      pod/catalog-service-bc966789d-jnj5t   Successfully pulled image "mau095/catalog-service:1.0.0" in 17.696s (17.696s including waiting). Image size: 178674921 bytes.
+42s         Normal    Created     pod/catalog-service-bc966789d-jnj5t   Container created
+42s         Normal    Started     pod/catalog-service-bc966789d-jnj5t   Container started
+26s         Warning   Unhealthy   pod/catalog-service-bc966789d-jnj5t   Readiness probe failed: HTTP probe failed with statuscode: 503
+

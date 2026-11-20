@@ -1,0 +1,82 @@
+﻿PS> Get-ChildItem k8s
+
+Name               Length LastWriteTime            
+----               ------ -------------            
+01-deployment.yaml   1379 15/11/2026 10:27:13 p. m.
+02-service.yaml       245 08/10/2026 08:27:31 a. m.
+
+
+
+
+PS> Get-Content k8s\01-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: catalog-service
+  labels:
+    app: catalog-service
+    version: v1.0.0
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: catalog-service
+  template:
+    metadata:
+      labels:
+        app: catalog-service
+        version: v1.0.0
+    spec:
+      containers:
+        - name: catalog-service
+          image: mau095/catalog-service:1.0.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+              name: http
+
+          # Health Checks: Los endpoints fueron validados manualmente en Lab 1.1
+          # Ahora Kubernetes los valida automÃ¡ticamente
+
+          # Readiness Probe: Â¿EstÃ¡ listo para recibir trÃ¡fico?
+          # Endpoint validado en Lab 1.1: curl http://localhost:8080/ready
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            timeoutSeconds: 2
+            failureThreshold: 2
+
+          # Liveness Probe: Â¿EstÃ¡ vivo el contenedor?
+          # Endpoint validado en Lab 1.1: curl http://localhost:8080/live
+          livenessProbe:
+            httpGet:
+              path: /live
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 2
+            failureThreshold: 3
+
+PS> Get-Content k8s\02-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: catalog-service
+  labels:
+    app: catalog-service
+spec:
+  type: ClusterIP
+  selector:
+    app: catalog-service
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
+      name: http
+
+PS> Select-String "image:" k8s\01-deployment.yaml
+image: mau095/catalog-service:1.0.0
+

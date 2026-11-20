@@ -1,0 +1,10 @@
+﻿PS> kubectl delete deployment catalog-service
+deployment.apps "catalog-service" deleted from default namespace
+
+PS> kubectl delete service catalog-service
+service "catalog-service" deleted from default namespace
+
+PS> kubectl get all -l app=catalog-service
+NAME                                  READY   STATUS        RESTARTS   AGE
+pod/catalog-service-bc966789d-jnj5t   1/1     Terminating   0          6m2s
+

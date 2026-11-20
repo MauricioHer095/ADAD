@@ -1,0 +1,60 @@
+﻿PS> kubectl describe pod catalog-service-bc966789d-jnj5t
+Name:             catalog-service-bc966789d-jnj5t
+Namespace:        default
+Priority:         0
+Service Account:  default
+Node:             minikube/192.168.49.2
+Start Time:       Mon, 16 Nov 2026 17:46:36 -0600
+Labels:           app=catalog-service
+                  pod-template-hash=bc966789d
+                  version=v1.0.0
+Annotations:      <none>
+Status:           Running
+IP:               10.244.0.3
+IPs:
+  IP:           10.244.0.3
+Controlled By:  ReplicaSet/catalog-service-bc966789d
+Containers:
+  catalog-service:
+    Container ID:   containerd://d9e82b4f487951ff4d19286e14a43d9baf2f6c23cb5bc2689104d171b003d533
+    Image:          mau095/catalog-service:1.0.0
+    Image ID:       docker.io/mau095/catalog-service@sha256:3d0a1c802cb6bfdf95771bfa3c0f9b1c20cb32e794afe585135f1d9db80a016b
+    Port:           8080/TCP (http)
+    Host Port:      0/TCP (http)
+    State:          Running
+      Started:      Mon, 16 Nov 2026 17:46:54 -0600
+    Ready:          True
+    Restart Count:  0
+    Liveness:       http-get http://:8080/live delay=10s timeout=2s period=10s #success=1 #failure=3
+    Readiness:      http-get http://:8080/ready delay=5s timeout=2s period=5s #success=1 #failure=2
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-87tl6 (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  kube-api-access-87tl6:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason     Age   From               Message
+  ----     ------     ----  ----               -------
+  Normal   Scheduled  60s   default-scheduler  Successfully assigned default/catalog-service-bc966789d-jnj5t to minikube
+  Normal   Pulling    60s   kubelet            Pulling image "mau095/catalog-service:1.0.0"
+  Normal   Pulled     42s   kubelet            Successfully pulled image "mau095/catalog-service:1.0.0" in 17.696s (17.696s including waiting). Image size: 178674921 bytes.
+  Normal   Created    42s   kubelet            Container created
+  Normal   Started    42s   kubelet            Container started
+  Warning  Unhealthy  26s   kubelet            Readiness probe failed: HTTP probe failed with statuscode: 503
+

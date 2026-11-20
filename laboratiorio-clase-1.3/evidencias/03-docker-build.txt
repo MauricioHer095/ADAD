@@ -1,0 +1,92 @@
+﻿PS> docker build -t mau095/catalog-service:1.0.0 .
+#0 building with "desktop-linux" instance using docker driver
+System.Management.Automation.RemoteException
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 710B 0.0s done
+#1 DONE 0.1s
+System.Management.Automation.RemoteException
+#2 [internal] load metadata for registry.access.redhat.com/ubi9/openjdk-25-runtime:1.24
+#2 DONE 1.2s
+System.Management.Automation.RemoteException
+#3 [internal] load .dockerignore
+#3 transferring context: 486B 0.0s done
+#3 DONE 0.0s
+System.Management.Automation.RemoteException
+#4 [1/5] FROM registry.access.redhat.com/ubi9/openjdk-25-runtime:1.24@sha256:7f2eaba33484d04e5331135e8d3e621c5a4740b6b03bc99d25e4d4dc043f6b8c
+#4 resolve registry.access.redhat.com/ubi9/openjdk-25-runtime:1.24@sha256:7f2eaba33484d04e5331135e8d3e621c5a4740b6b03bc99d25e4d4dc043f6b8c 0.0s done
+#4 DONE 0.0s
+System.Management.Automation.RemoteException
+#5 [internal] load build context
+#5 transferring context: 19.96MB 4.1s done
+#5 DONE 4.2s
+System.Management.Automation.RemoteException
+#4 [1/5] FROM registry.access.redhat.com/ubi9/openjdk-25-runtime:1.24@sha256:7f2eaba33484d04e5331135e8d3e621c5a4740b6b03bc99d25e4d4dc043f6b8c
+#4 sha256:163c9efc251ea7c61872494dd4d9d40363d43f90b51b7bc23abd04fa14741e98 15.73MB / 120.69MB 4.2s
+#4 sha256:51040db60f47ddfe3a4f303607764ee6c3fcf0e0f6c94140ce8ab86768b43f1d 5.24MB / 40.68MB 4.1s
+#4 sha256:163c9efc251ea7c61872494dd4d9d40363d43f90b51b7bc23abd04fa14741e98 22.02MB / 120.69MB 5.1s
+#4 sha256:51040db60f47ddfe3a4f303607764ee6c3fcf0e0f6c94140ce8ab86768b43f1d 7.34MB / 40.68MB 5.0s
+#4 sha256:51040db60f47ddfe3a4f303607764ee6c3fcf0e0f6c94140ce8ab86768b43f1d 9.44MB / 40.68MB 5.4s
+#4 sha256:163c9efc251ea7c61872494dd4d9d40363d43f90b51b7bc23abd04fa14741e98 30.41MB / 120.69MB 5.7s
+#4 sha256:51040db60f47ddfe3a4f303607764ee6c3fcf0e0f6c94140ce8ab86768b43f1d 11.53MB / 40.68MB 5.9s
+#4 sha256:163c9efc251ea7c61872494dd4d9d40363d43f90b51b7bc23abd04fa14741e98 37.75MB / 120.69MB 6.2s
+#4 sha256:51040db60f47ddfe3a4f303607764ee6c3fcf0e0f6c94140ce8ab86768b43f1d 13.63MB / 40.68MB 6.5s
+#4 sha256:163c9efc251ea7c61872494dd4d9d40363d43f90b51b7bc23abd04fa14741e98 44.04MB / 120.69MB 7.2s
+#4 sha256:51040db60f47ddfe3a4f303607764ee6c3fcf0e0f6c94140ce8ab86768b43f1d 15.73MB / 40.68MB 7.8s
+#4 sha256:163c9efc251ea7c61872494dd4d9d40363d43f90b51b7bc23abd04fa14741e98 50.33MB / 120.69MB 9.5s
+#4 sha256:51040db60f47ddfe3a4f303607764ee6c3fcf0e0f6c94140ce8ab86768b43f1d 17.83MB / 40.68MB 9.6s
+#4 sha256:51040db60f47ddfe3a4f303607764ee6c3fcf0e0f6c94140ce8ab86768b43f1d 19.92MB / 40.68MB 10.7s
+#4 sha256:163c9efc251ea7c61872494dd4d9d40363d43f90b51b7bc23abd04fa14741e98 56.62MB / 120.69MB 11.0s
+#4 sha256:51040db60f47ddfe3a4f303607764ee6c3fcf0e0f6c94140ce8ab86768b43f1d 22.02MB / 40.68MB 11.0s
+#4 sha256:51040db60f47ddfe3a4f303607764ee6c3fcf0e0f6c94140ce8ab86768b43f1d 25.17MB / 40.68MB 11.3s
+#4 sha256:163c9efc251ea7c61872494dd4d9d40363d43f90b51b7bc23abd04fa14741e98 62.91MB / 120.69MB 11.6s
+#4 sha256:51040db60f47ddfe3a4f303607764ee6c3fcf0e0f6c94140ce8ab86768b43f1d 28.31MB / 40.68MB 11.6s
+#4 sha256:51040db60f47ddfe3a4f303607764ee6c3fcf0e0f6c94140ce8ab86768b43f1d 30.41MB / 40.68MB 11.9s
+#4 sha256:163c9efc251ea7c61872494dd4d9d40363d43f90b51b7bc23abd04fa14741e98 69.21MB / 120.69MB 12.2s
+#4 sha256:51040db60f47ddfe3a4f303607764ee6c3fcf0e0f6c94140ce8ab86768b43f1d 32.51MB / 40.68MB 12.0s
+#4 sha256:51040db60f47ddfe3a4f303607764ee6c3fcf0e0f6c94140ce8ab86768b43f1d 35.65MB / 40.68MB 12.3s
+#4 sha256:163c9efc251ea7c61872494dd4d9d40363d43f90b51b7bc23abd04fa14741e98 75.50MB / 120.69MB 12.8s
+#4 sha256:51040db60f47ddfe3a4f303607764ee6c3fcf0e0f6c94140ce8ab86768b43f1d 38.80MB / 40.68MB 12.6s
+#4 sha256:51040db60f47ddfe3a4f303607764ee6c3fcf0e0f6c94140ce8ab86768b43f1d 40.68MB / 40.68MB 12.8s done
+#4 extracting sha256:51040db60f47ddfe3a4f303607764ee6c3fcf0e0f6c94140ce8ab86768b43f1d
+#4 sha256:163c9efc251ea7c61872494dd4d9d40363d43f90b51b7bc23abd04fa14741e98 82.84MB / 120.69MB 13.2s
+#4 sha256:163c9efc251ea7c61872494dd4d9d40363d43f90b51b7bc23abd04fa14741e98 89.13MB / 120.69MB 13.5s
+#4 extracting sha256:51040db60f47ddfe3a4f303607764ee6c3fcf0e0f6c94140ce8ab86768b43f1d 0.9s done
+#4 sha256:163c9efc251ea7c61872494dd4d9d40363d43f90b51b7bc23abd04fa14741e98 97.52MB / 120.69MB 14.0s
+#4 sha256:163c9efc251ea7c61872494dd4d9d40363d43f90b51b7bc23abd04fa14741e98 103.81MB / 120.69MB 14.3s
+#4 sha256:163c9efc251ea7c61872494dd4d9d40363d43f90b51b7bc23abd04fa14741e98 111.15MB / 120.69MB 14.7s
+#4 sha256:163c9efc251ea7c61872494dd4d9d40363d43f90b51b7bc23abd04fa14741e98 117.44MB / 120.69MB 15.0s
+#4 sha256:163c9efc251ea7c61872494dd4d9d40363d43f90b51b7bc23abd04fa14741e98 120.69MB / 120.69MB 15.3s done
+#4 extracting sha256:163c9efc251ea7c61872494dd4d9d40363d43f90b51b7bc23abd04fa14741e98
+#4 extracting sha256:163c9efc251ea7c61872494dd4d9d40363d43f90b51b7bc23abd04fa14741e98 1.8s done
+#4 DONE 17.2s
+System.Management.Automation.RemoteException
+#6 [2/5] COPY --chown=185 target/quarkus-app/lib/ /deployments/lib/
+#6 DONE 0.5s
+System.Management.Automation.RemoteException
+#7 [3/5] COPY --chown=185 target/quarkus-app/*.jar /deployments/
+#7 DONE 0.0s
+System.Management.Automation.RemoteException
+#8 [4/5] COPY --chown=185 target/quarkus-app/app/ /deployments/app/
+#8 DONE 0.0s
+System.Management.Automation.RemoteException
+#9 [5/5] COPY --chown=185 target/quarkus-app/quarkus/ /deployments/quarkus/
+#9 DONE 0.0s
+System.Management.Automation.RemoteException
+#10 exporting to image
+#10 exporting layers
+#10 exporting layers 0.6s done
+#10 exporting manifest sha256:670321e15605289c6cefab0310c80486839e46cf9fe1e6caa56421bd539abb04 0.0s done
+#10 exporting config sha256:6b63c6eb2cca019def8dee8110ea18e02a332c49cbc9bdb806fcd5ed41624a55 0.0s done
+#10 exporting attestation manifest sha256:ecf563d001372955d9368dee1797419bf3c55e7e7f69eb6b5afe39078d321caf 0.0s done
+#10 exporting manifest list sha256:3d0a1c802cb6bfdf95771bfa3c0f9b1c20cb32e794afe585135f1d9db80a016b 0.0s done
+#10 naming to docker.io/mau095/catalog-service:1.0.0
+#10 naming to docker.io/mau095/catalog-service:1.0.0 done
+#10 unpacking to docker.io/mau095/catalog-service:1.0.0
+#10 unpacking to docker.io/mau095/catalog-service:1.0.0 0.2s done
+#10 DONE 0.9s
+
+PS> docker images mau095/catalog-service
+WARNING: This output is designed for human readability. For machine-readable output, please use --format.
+IMAGE                          ID             DISK USAGE   CONTENT SIZE   EXTRA
+mau095/catalog-service:1.0.0   3d0a1c802cb6        675MB          179MB        
+

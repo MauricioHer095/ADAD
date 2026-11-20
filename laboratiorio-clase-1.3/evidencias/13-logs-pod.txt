@@ -1,0 +1,49 @@
+﻿PS> kubectl logs catalog-service-bc966789d-jnj5t --tail=40
+LogManager error of type OPEN_FAILURE: Failed to set log file
+java.io.FileNotFoundException: target/catalog-service.log (No such file or directory)
+	at java.base/java.io.FileOutputStream.open0(Native Method)
+	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:255)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:210)
+	at org.jboss.logmanager.handlers.FileHandler.setFile(FileHandler.java:155)
+	at org.jboss.logmanager.handlers.SizeRotatingFileHandler.setFileInternal(SizeRotatingFileHandler.java:288)
+	at org.jboss.logmanager.handlers.SizeRotatingFileHandler.setFile(SizeRotatingFileHandler.java:158)
+	at io.quarkus.runtime.logging.LoggingSetupRecorder.configureFileHandler(LoggingSetupRecorder.java:755)
+	at io.quarkus.runtime.logging.LoggingSetupRecorder.initializeLogging(LoggingSetupRecorder.java:217)
+	at io.quarkus.runner.recorded.LoggingResourceProcessor$setupLoggingRuntimeInit449118732.deploy_0(Unknown Source)
+	at io.quarkus.runner.recorded.LoggingResourceProcessor$setupLoggingRuntimeInit449118732.deploy(Unknown Source)
+	at io.quarkus.runner.ApplicationImpl.doStart(Unknown Source)
+	at io.quarkus.runtime.Application.start(Application.java:112)
+	at io.quarkus.runtime.ApplicationLifecycleManager.run(ApplicationLifecycleManager.java:129)
+	at io.quarkus.runtime.Quarkus.run(Quarkus.java:79)
+	at io.quarkus.runtime.Quarkus.run(Quarkus.java:50)
+	at io.quarkus.runtime.Quarkus.run(Quarkus.java:143)
+	at io.quarkus.runner.GeneratedMain.main(Unknown Source)
+	at io.quarkus.bootstrap.runner.QuarkusEntryPoint.doRun(QuarkusEntryPoint.java:70)
+	at io.quarkus.bootstrap.runner.QuarkusEntryPoint.main(QuarkusEntryPoint.java:36)
+__  ____  __  _____   ___  __ ____  ______ 
+ --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
+ -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
+--\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
+23:46:55 INFO  [io.quarkus] (main) catalog-service 1.0.0 on JVM (powered by Quarkus 3.38.0) started in 0.711s. Listening on: http://0.0.0.0:8080
+23:46:55 INFO  [io.quarkus] (main) Profile prod activated. 
+23:46:55 INFO  [io.quarkus] (main) Installed features: [cdi, rest, rest-jackson, smallrye-context-propagation, smallrye-fault-tolerance, smallrye-health, vertx]
+23:47:10 INFO  [io.sm.health] (vert.x-eventloop-thread-0) SRHCK01001: Reporting health down status: {"status":"DOWN","checks":[{"name":"catalog-database-check","status":"DOWN"}]}
+23:48:03 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) ÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉ
+23:48:03 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Consultando cat├ílogo de productos...
+23:48:03 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Cat├ílogo retornado exitosamente desde la base de datos primaria.
+23:48:03 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) ÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉ
+23:48:03 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Consultando cat├ílogo de productos...
+23:48:03 SEVERE [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Falla de conexi├│n a la base de datos primaria.
+23:48:03 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 2/3] Consultando cat├ílogo de productos...
+23:48:03 WARNING [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 2/3] Simulando latencia alta en consulta de cat├ílogo...
+23:48:04 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 3/3] Consultando cat├ílogo de productos...
+23:48:04 SEVERE [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 3/3] Falla de conexi├│n despu├®s de reintentos.
+23:48:04 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 3 intentos. Sirviendo datos desde cach├®.
+
+PS> kubectl exec catalog-service-bc966789d-jnj5t -- curl -s http://localhost:8080/live
+{
+    "status": "UP",
+    "checks": [
+    ]
+}
+
