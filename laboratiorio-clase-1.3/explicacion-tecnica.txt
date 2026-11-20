@@ -1,0 +1,8 @@
+﻿Explicación técnica integrada - Laboratorio 1.3: De Docker a Kubernetes Local
+Mauricio Hernández Aguilar
+
+Compilé catalog-service con Maven (.\mvnw.cmd clean package -DskipTests), generando target/quarkus-app con el código resiliente del Lab 1.2 (@Timeout, @Retry, @CircuitBreaker, @Fallback). Con docker build empaqueté esa salida en la imagen mau095/catalog-service:1.0.0 y la publiqué con docker push; al borrarla localmente y ejecutar docker pull comprobé que Docker Hub la entrega a cualquier equipo.
+
+Después edité k8s/01-deployment.yaml para que image apunte a mi repositorio. El Deployment declara una réplica, el puerto 8080 y dos probes: readinessProbe (/ready, cada 5 s) y livenessProbe (/live, cada 10 s). Al ejecutar kubectl apply, Minikube, que tiene su propio almacén de imágenes, descargó la imagen desde Docker Hub (eventos Pulling y Pulled). El Service ClusterIP le dio una dirección interna estable y accedí con kubectl port-forward.
+
+Kubernetes ahora hace automáticamente lo que en el Lab 1.1 hice con curl: si /ready falla, retira el Pod del Service; si /live falla, reinicia el contenedor. Así se suman dos capas de resiliencia: la del código y la de la plataforma. El flujo es el de un pipeline real: build, push al registro y despliegue declarativo.
