@@ -1,0 +1,534 @@
+﻿
+==================== DATOS DE LA EJECUCION ====================
+Fecha:    2026-11-16 17:45:03
+Proyecto: C:\Users\Lenovo\OneDrive\Documentos\ADAD\u1-ha-architecture\02-laboratorio\proy-base-u1\catalog-service
+Imagen:   mau095/catalog-service:1.0.0
+
+==================== PASO 0 - Verificacion del entorno ====================
+PS> docker info
+Server: 29.2.1 | OS: Docker Desktop | CPUs: 12
+
+PS> java -version
+java version "25.0.2" 2026-01-20 LTS
+Java(TM) SE Runtime Environment (build 25.0.2+10-LTS-69)
+Java HotSpot(TM) 64-Bit Server VM (build 25.0.2+10-LTS-69, mixed mode, sharing)
+
+PS> kubectl version --client
+Client Version: v1.34.1
+Kustomize Version: v5.7.1
+
+PS> minikube version
+minikube version: v1.39.0
+commit: 7a9f6a841470a207de8cf4bafcccee0969d8ba10
+
+PS> minikube status
+minikube
+type: Control Plane
+host: Stopped
+kubelet: Stopped
+apiserver: Stopped
+kubeconfig: Stopped
+
+
+Minikube no esta encendido; iniciandolo...
+PS> minikube start --driver=docker --cpus=2 --memory=4096
+* minikube v1.39.0 en Microsoft Windows 11 Home Single Language 26H2
+* Using the docker driver based on existing profile
+* Starting "minikube" primary control-plane node in "minikube" cluster
+* Pulling base image v0.0.51 ...
+* Preparando Kubernetes v1.37.0 en containerd 2.3.4...
+* Verifying Kubernetes components...
+  - Using image gcr.io/k8s-minikube/storage-provisioner:v5
+* Complementos habilitados: default-storageclass, storage-provisioner
+
+! C:\Program Files\Docker\Docker\resources\bin\kubectl.exe is version 1.34.1, which may have incompatibilities with Kubernetes 1.37.0.
+  - Want kubectl v1.37.0? Try 'minikube kubectl -- get pods -A'
+* Done! kubectl is now configured to use "minikube" cluster and "default" namespace by default
+
+PS> kubectl config use-context minikube
+Switched to context "minikube".
+
+
+==================== PASO 1 - Preparar Kubernetes local ====================
+PS> kubectl cluster-info
+Kubernetes control plane is running at https://127.0.0.1:44358
+CoreDNS is running at https://127.0.0.1:44358/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+
+To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
+
+PS> kubectl get nodes
+NAME       STATUS   ROLES           AGE   VERSION
+minikube   Ready    control-plane   19h   v1.37.0
+
+
+==================== PASO 2.1 - Compilar con Maven y construir la imagen Docker ====================
+Se compila en una copia fuera de OneDrive para evitar archivos bloqueados: C:\Users\Lenovo\AppData\Local\Temp\catalog-lab13-build-20261116-174542
+PS> .\mvnw.cmd -B clean package -DskipTests
+[... salida completa en 02-maven-package.txt; ultimas 25 lineas ...]
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 2 source files with javac [debug release 25] to target\classes
+[INFO] 
+[INFO] --- quarkus:3.38.0:generate-code-tests (default) @ catalog-service ---
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ catalog-service ---
+[INFO] skip non existing resourceDirectory C:\Users\Lenovo\AppData\Local\Temp\catalog-lab13-build-20261116-174542\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ catalog-service ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ catalog-service ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.5.0:jar (default-jar) @ catalog-service ---
+[INFO] Building jar: C:\Users\Lenovo\AppData\Local\Temp\catalog-lab13-build-20261116-174542\target\catalog-service-1.0.0.jar
+[INFO] 
+[INFO] --- quarkus:3.38.0:build (default) @ catalog-service ---
+[INFO] [io.quarkus.deployment.QuarkusAugmentor] Quarkus augmentation completed in 2340ms
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  11.799 s
+[INFO] Finished at: 2026-11-16T17:45:56-06:00
+[INFO] ------------------------------------------------------------------------
+
+PS> Get-ChildItem target\quarkus-app
+
+Mode   LastWriteTime             Length Name                        
+----   -------------             ------ ----                        
+d----- 16/11/2026 05:45:56 p. m.        app                         
+d----- 16/11/2026 05:45:55 p. m.        lib                         
+d----- 16/11/2026 05:45:56 p. m.        quarkus                     
+-a---- 16/11/2026 05:45:56 p. m. 6830   quarkus-app-dependencies.txt
+-a---- 16/11/2026 05:45:56 p. m. 689    quarkus-run.jar             
+
+
+
+
+PS> docker build -t mau095/catalog-service:1.0.0 .
+[... salida completa en 03-docker-build.txt; ultimas 15 lineas ...]
+#9 [5/5] COPY --chown=185 target/quarkus-app/quarkus/ /deployments/quarkus/
+#9 DONE 0.0s
+System.Management.Automation.RemoteException
+#10 exporting to image
+#10 exporting layers
+#10 exporting layers 0.6s done
+#10 exporting manifest sha256:670321e15605289c6cefab0310c80486839e46cf9fe1e6caa56421bd539abb04 0.0s done
+#10 exporting config sha256:6b63c6eb2cca019def8dee8110ea18e02a332c49cbc9bdb806fcd5ed41624a55 0.0s done
+#10 exporting attestation manifest sha256:ecf563d001372955d9368dee1797419bf3c55e7e7f69eb6b5afe39078d321caf 0.0s done
+#10 exporting manifest list sha256:3d0a1c802cb6bfdf95771bfa3c0f9b1c20cb32e794afe585135f1d9db80a016b 0.0s done
+#10 naming to docker.io/mau095/catalog-service:1.0.0
+#10 naming to docker.io/mau095/catalog-service:1.0.0 done
+#10 unpacking to docker.io/mau095/catalog-service:1.0.0
+#10 unpacking to docker.io/mau095/catalog-service:1.0.0 0.2s done
+#10 DONE 0.9s
+
+PS> docker images mau095/catalog-service
+WARNING: This output is designed for human readability. For machine-readable output, please use --format.
+IMAGE                          ID             DISK USAGE   CONTENT SIZE   EXTRA
+mau095/catalog-service:1.0.0   3d0a1c802cb6        675MB          179MB        
+
+
+==================== PASO 2.2 - Subir la imagen a Docker Hub ====================
+PS> docker login -> codigo de salida 0
+PS> docker push mau095/catalog-service:1.0.0
+The push refers to repository [docker.io/mau095/catalog-service]
+c258ed900fd9: Waiting
+ae09d9763e03: Waiting
+163c9efc251e: Waiting
+0cf5c0feaf89: Waiting
+51040db60f47: Waiting
+591afad608f6: Waiting
+e9ba8e4a04be: Waiting
+ae09d9763e03: Waiting
+163c9efc251e: Waiting
+0cf5c0feaf89: Waiting
+51040db60f47: Waiting
+591afad608f6: Waiting
+e9ba8e4a04be: Waiting
+c258ed900fd9: Waiting
+163c9efc251e: Waiting
+0cf5c0feaf89: Waiting
+51040db60f47: Waiting
+591afad608f6: Waiting
+e9ba8e4a04be: Waiting
+c258ed900fd9: Waiting
+ae09d9763e03: Waiting
+163c9efc251e: Waiting
+0cf5c0feaf89: Waiting
+51040db60f47: Waiting
+591afad608f6: Waiting
+e9ba8e4a04be: Waiting
+c258ed900fd9: Waiting
+ae09d9763e03: Waiting
+51040db60f47: Waiting
+591afad608f6: Waiting
+e9ba8e4a04be: Waiting
+c258ed900fd9: Waiting
+ae09d9763e03: Waiting
+163c9efc251e: Waiting
+0cf5c0feaf89: Waiting
+ae09d9763e03: Waiting
+163c9efc251e: Waiting
+0cf5c0feaf89: Waiting
+51040db60f47: Waiting
+591afad608f6: Waiting
+e9ba8e4a04be: Waiting
+c258ed900fd9: Waiting
+591afad608f6: Waiting
+e9ba8e4a04be: Waiting
+c258ed900fd9: Waiting
+ae09d9763e03: Waiting
+163c9efc251e: Waiting
+0cf5c0feaf89: Waiting
+51040db60f47: Waiting
+c258ed900fd9: Waiting
+0cf5c0feaf89: Waiting
+51040db60f47: Waiting
+591afad608f6: Waiting
+0cf5c0feaf89: Pushed
+e9ba8e4a04be: Pushed
+c258ed900fd9: Pushed
+591afad608f6: Pushed
+ae09d9763e03: Pushed
+51040db60f47: Pushed
+163c9efc251e: Pushed
+1.0.0: digest: sha256:3d0a1c802cb6bfdf95771bfa3c0f9b1c20cb32e794afe585135f1d9db80a016b size: 856
+
+
+==================== PASO 2.3 - Verificar la descarga desde Docker Hub ====================
+PS> docker image rm mau095/catalog-service:1.0.0
+Untagged: mau095/catalog-service:1.0.0
+Deleted: sha256:3d0a1c802cb6bfdf95771bfa3c0f9b1c20cb32e794afe585135f1d9db80a016b
+
+PS> docker pull mau095/catalog-service:1.0.0
+1.0.0: Pulling from mau095/catalog-service
+591afad608f6: Pulling fs layer
+ae09d9763e03: Pulling fs layer
+c258ed900fd9: Pulling fs layer
+e9ba8e4a04be: Pulling fs layer
+591afad608f6: Already exists
+ae09d9763e03: Already exists
+c258ed900fd9: Already exists
+e9ba8e4a04be: Already exists
+591afad608f6: Pull complete
+ae09d9763e03: Pull complete
+c258ed900fd9: Pull complete
+e9ba8e4a04be: Pull complete
+0cf5c0feaf89: Download complete
+Digest: sha256:3d0a1c802cb6bfdf95771bfa3c0f9b1c20cb32e794afe585135f1d9db80a016b
+Status: Downloaded newer image for mau095/catalog-service:1.0.0
+docker.io/mau095/catalog-service:1.0.0
+
+
+==================== PASO 3.1-3.3 - Manifiestos YAML ====================
+PS> Get-ChildItem k8s
+
+Name               Length LastWriteTime            
+----               ------ -------------            
+01-deployment.yaml   1379 15/11/2026 10:27:13 p. m.
+02-service.yaml       245 08/10/2026 08:27:31 a. m.
+
+
+
+
+PS> Get-Content k8s\01-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: catalog-service
+  labels:
+    app: catalog-service
+    version: v1.0.0
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: catalog-service
+  template:
+    metadata:
+      labels:
+        app: catalog-service
+        version: v1.0.0
+    spec:
+      containers:
+        - name: catalog-service
+          image: mau095/catalog-service:1.0.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+              name: http
+
+          # Health Checks: Los endpoints fueron validados manualmente en Lab 1.1
+          # Ahora Kubernetes los valida automÃ¡ticamente
+
+          # Readiness Probe: Â¿EstÃ¡ listo para recibir trÃ¡fico?
+          # Endpoint validado en Lab 1.1: curl http://localhost:8080/ready
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            timeoutSeconds: 2
+            failureThreshold: 2
+
+          # Liveness Probe: Â¿EstÃ¡ vivo el contenedor?
+          # Endpoint validado en Lab 1.1: curl http://localhost:8080/live
+          livenessProbe:
+            httpGet:
+              path: /live
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 2
+            failureThreshold: 3
+
+PS> Get-Content k8s\02-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: catalog-service
+  labels:
+    app: catalog-service
+spec:
+  type: ClusterIP
+  selector:
+    app: catalog-service
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
+      name: http
+
+PS> Select-String "image:" k8s\01-deployment.yaml
+image: mau095/catalog-service:1.0.0
+
+
+==================== PASO 3.5 - Desplegar en Kubernetes ====================
+Limpieza previa: asi Kubernetes tiene que descargar la imagen desde Docker Hub (evidencia 'Pulling image').
+PS> kubectl delete (recursos de una corrida anterior, si existen)
+
+
+PS> minikube image rm mau095/catalog-service:1.0.0
+! Failed to remove images for profile minikube error removing images: crictl: sudo /usr/local/bin/crictl rmi mau095/catalog-service:1.0.0: Process exited with status 1
+stdout:
+System.Management.Automation.RemoteException
+stderr:
+no such image mau095/catalog-service:1.0.0
+System.Management.Automation.RemoteException
+
+PS> kubectl apply -f k8s\01-deployment.yaml
+deployment.apps/catalog-service created
+
+PS> kubectl apply -f k8s\02-service.yaml
+service/catalog-service created
+
+
+==================== PASO 3.6 - Verificar el despliegue ====================
+PS> kubectl rollout status deployment/catalog-service --timeout=240s
+Waiting for deployment "catalog-service" rollout to finish: 0 of 1 updated replicas are available...
+deployment "catalog-service" successfully rolled out
+
+PS> kubectl get deployment catalog-service
+NAME              READY   UP-TO-DATE   AVAILABLE   AGE
+catalog-service   1/1     1            1           24s
+
+PS> kubectl get pods -l app=catalog-service
+NAME                              READY   STATUS    RESTARTS   AGE
+catalog-service-bc966789d-jnj5t   1/1     Running   0          24s
+
+PS> kubectl get service catalog-service
+NAME              TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
+catalog-service   ClusterIP   10.109.253.173   <none>        8080/TCP   24s
+
+
+==================== PASO 4.2 - Descarga desde Docker Hub y health checks automaticos ====================
+Esperando 35 s para que Kubernetes ejecute varias veces los probes...
+PS> kubectl describe pod catalog-service-bc966789d-jnj5t
+Name:             catalog-service-bc966789d-jnj5t
+Namespace:        default
+Priority:         0
+Service Account:  default
+Node:             minikube/192.168.49.2
+Start Time:       Mon, 16 Nov 2026 17:46:36 -0600
+Labels:           app=catalog-service
+                  pod-template-hash=bc966789d
+                  version=v1.0.0
+Annotations:      <none>
+Status:           Running
+IP:               10.244.0.3
+IPs:
+  IP:           10.244.0.3
+Controlled By:  ReplicaSet/catalog-service-bc966789d
+Containers:
+  catalog-service:
+    Container ID:   containerd://d9e82b4f487951ff4d19286e14a43d9baf2f6c23cb5bc2689104d171b003d533
+    Image:          mau095/catalog-service:1.0.0
+    Image ID:       docker.io/mau095/catalog-service@sha256:3d0a1c802cb6bfdf95771bfa3c0f9b1c20cb32e794afe585135f1d9db80a016b
+    Port:           8080/TCP (http)
+    Host Port:      0/TCP (http)
+    State:          Running
+      Started:      Mon, 16 Nov 2026 17:46:54 -0600
+    Ready:          True
+    Restart Count:  0
+    Liveness:       http-get http://:8080/live delay=10s timeout=2s period=10s #success=1 #failure=3
+    Readiness:      http-get http://:8080/ready delay=5s timeout=2s period=5s #success=1 #failure=2
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-87tl6 (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  kube-api-access-87tl6:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason     Age   From               Message
+  ----     ------     ----  ----               -------
+  Normal   Scheduled  60s   default-scheduler  Successfully assigned default/catalog-service-bc966789d-jnj5t to minikube
+  Normal   Pulling    60s   kubelet            Pulling image "mau095/catalog-service:1.0.0"
+  Normal   Pulled     42s   kubelet            Successfully pulled image "mau095/catalog-service:1.0.0" in 17.696s (17.696s including waiting). Image size: 178674921 bytes.
+  Normal   Created    42s   kubelet            Container created
+  Normal   Started    42s   kubelet            Container started
+  Warning  Unhealthy  26s   kubelet            Readiness probe failed: HTTP probe failed with statuscode: 503
+
+PS> kubectl get events (solo del pod catalog-service-bc966789d-jnj5t)
+LAST SEEN   TYPE      REASON      OBJECT                                MESSAGE
+60s         Normal    Scheduled   pod/catalog-service-bc966789d-jnj5t   Successfully assigned default/catalog-service-bc966789d-jnj5t to minikube
+60s         Normal    Pulling     pod/catalog-service-bc966789d-jnj5t   Pulling image "mau095/catalog-service:1.0.0"
+42s         Normal    Pulled      pod/catalog-service-bc966789d-jnj5t   Successfully pulled image "mau095/catalog-service:1.0.0" in 17.696s (17.696s including waiting). Image size: 178674921 bytes.
+42s         Normal    Created     pod/catalog-service-bc966789d-jnj5t   Container created
+42s         Normal    Started     pod/catalog-service-bc966789d-jnj5t   Container started
+26s         Warning   Unhealthy   pod/catalog-service-bc966789d-jnj5t   Readiness probe failed: HTTP probe failed with statuscode: 503
+
+Kubernetes no genera eventos cuando un probe tiene EXITO (solo 'Unhealthy' cuando falla).
+Como evidencia se leen los contadores del kubelet (prober_probe_total, result=successful).
+PS> kubectl get --raw /api/v1/nodes/minikube/proxy/metrics/probes  (lectura 1)
+prober_probe_total{container="catalog-service",namespace="default",pod="catalog-service-bc966789d-jnj5t",pod_uid="710b1f92-bb29-40c2-b725-b8451a6b2aef",probe_type="Liveness",result="successful"} 3
+prober_probe_total{container="catalog-service",namespace="default",pod="catalog-service-bc966789d-jnj5t",pod_uid="710b1f92-bb29-40c2-b725-b8451a6b2aef",probe_type="Readiness",result="successful"} 7
+
+Esperando 20 s para leer de nuevo los contadores...
+PS> kubectl get --raw /api/v1/nodes/minikube/proxy/metrics/probes  (lectura 2, 20 s despues)
+prober_probe_total{container="catalog-service",namespace="default",pod="catalog-service-bc966789d-jnj5t",pod_uid="710b1f92-bb29-40c2-b725-b8451a6b2aef",probe_type="Liveness",result="successful"} 5
+prober_probe_total{container="catalog-service",namespace="default",pod="catalog-service-bc966789d-jnj5t",pod_uid="710b1f92-bb29-40c2-b725-b8451a6b2aef",probe_type="Readiness",result="successful"} 11
+
+Probes exitosos -> Readiness: 7 a 11 | Liveness: 3 a 5 | Reinicios del contenedor: 0
+
+==================== PASO 4.1 - Acceder al servicio con port-forward y probar endpoints ====================
+El puerto 8080 lo ocupa el proceso 'TNSLSNR'.
+Deteniendo temporalmente OracleXETNSListener (Windows pedira permiso de administrador)...
+OracleXETNSListener detenido. Se reactivara automaticamente al terminar las pruebas.
+PS> kubectl port-forward svc/catalog-service 8080:8080   (en segundo plano, PID 31488)
+PS> curl.exe -s http://localhost:8080/v1/products | jq .
+{
+  "status": "SUCCESS",
+  "data": [
+    "Product A",
+    "Product B",
+    "Product C"
+  ]
+}
+
+PS> curl.exe -s http://localhost:8080/health | jq .
+{
+  "status": "UP",
+  "checks": [
+    {
+      "name": "catalog-database-check",
+      "status": "UP"
+    }
+  ]
+}
+
+PS> curl.exe -s http://localhost:8080/ready | jq .
+{
+  "status": "UP",
+  "checks": [
+    {
+      "name": "catalog-database-check",
+      "status": "UP"
+    }
+  ]
+}
+
+PS> curl.exe -s http://localhost:8080/live | jq .
+{
+  "status": "UP",
+  "checks": []
+}
+
+PS> kubectl logs catalog-service-bc966789d-jnj5t --tail=40
+LogManager error of type OPEN_FAILURE: Failed to set log file
+java.io.FileNotFoundException: target/catalog-service.log (No such file or directory)
+	at java.base/java.io.FileOutputStream.open0(Native Method)
+	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:255)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:210)
+	at org.jboss.logmanager.handlers.FileHandler.setFile(FileHandler.java:155)
+	at org.jboss.logmanager.handlers.SizeRotatingFileHandler.setFileInternal(SizeRotatingFileHandler.java:288)
+	at org.jboss.logmanager.handlers.SizeRotatingFileHandler.setFile(SizeRotatingFileHandler.java:158)
+	at io.quarkus.runtime.logging.LoggingSetupRecorder.configureFileHandler(LoggingSetupRecorder.java:755)
+	at io.quarkus.runtime.logging.LoggingSetupRecorder.initializeLogging(LoggingSetupRecorder.java:217)
+	at io.quarkus.runner.recorded.LoggingResourceProcessor$setupLoggingRuntimeInit449118732.deploy_0(Unknown Source)
+	at io.quarkus.runner.recorded.LoggingResourceProcessor$setupLoggingRuntimeInit449118732.deploy(Unknown Source)
+	at io.quarkus.runner.ApplicationImpl.doStart(Unknown Source)
+	at io.quarkus.runtime.Application.start(Application.java:112)
+	at io.quarkus.runtime.ApplicationLifecycleManager.run(ApplicationLifecycleManager.java:129)
+	at io.quarkus.runtime.Quarkus.run(Quarkus.java:79)
+	at io.quarkus.runtime.Quarkus.run(Quarkus.java:50)
+	at io.quarkus.runtime.Quarkus.run(Quarkus.java:143)
+	at io.quarkus.runner.GeneratedMain.main(Unknown Source)
+	at io.quarkus.bootstrap.runner.QuarkusEntryPoint.doRun(QuarkusEntryPoint.java:70)
+	at io.quarkus.bootstrap.runner.QuarkusEntryPoint.main(QuarkusEntryPoint.java:36)
+__  ____  __  _____   ___  __ ____  ______ 
+ --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
+ -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
+--\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
+23:46:55 INFO  [io.quarkus] (main) catalog-service 1.0.0 on JVM (powered by Quarkus 3.38.0) started in 0.711s. Listening on: http://0.0.0.0:8080
+23:46:55 INFO  [io.quarkus] (main) Profile prod activated. 
+23:46:55 INFO  [io.quarkus] (main) Installed features: [cdi, rest, rest-jackson, smallrye-context-propagation, smallrye-fault-tolerance, smallrye-health, vertx]
+23:47:10 INFO  [io.sm.health] (vert.x-eventloop-thread-0) SRHCK01001: Reporting health down status: {"status":"DOWN","checks":[{"name":"catalog-database-check","status":"DOWN"}]}
+23:48:03 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) ÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉ
+23:48:03 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Consultando cat├ílogo de productos...
+23:48:03 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Cat├ílogo retornado exitosamente desde la base de datos primaria.
+23:48:03 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) ÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉ
+23:48:03 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Consultando cat├ílogo de productos...
+23:48:03 SEVERE [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 1/3] Falla de conexi├│n a la base de datos primaria.
+23:48:03 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 2/3] Consultando cat├ílogo de productos...
+23:48:03 WARNING [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 2/3] Simulando latencia alta en consulta de cat├ílogo...
+23:48:04 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 3/3] Consultando cat├ílogo de productos...
+23:48:04 SEVERE [co.ec.ca.CatalogResource] (executor-thread-1) [Intento 3/3] Falla de conexi├│n despu├®s de reintentos.
+23:48:04 INFO  [co.ec.ca.CatalogResource] (executor-thread-1) Fallback activado: Se agotaron todos los 3 intentos. Sirviendo datos desde cach├®.
+
+PS> kubectl exec catalog-service-bc966789d-jnj5t -- curl -s http://localhost:8080/live
+{
+    "status": "UP",
+    "checks": [
+    ]
+}
+
+port-forward detenido.
+
+
+==================== PASO 5 - Limpieza ====================
+PS> kubectl delete deployment catalog-service
+deployment.apps "catalog-service" deleted from default namespace
+
+PS> kubectl delete service catalog-service
+service "catalog-service" deleted from default namespace
+
+PS> kubectl get all -l app=catalog-service
+NAME                                  READY   STATUS        RESTARTS   AGE
+pod/catalog-service-bc966789d-jnj5t   1/1     Terminating   0          6m2s
+
